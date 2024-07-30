@@ -1,62 +1,193 @@
+# import numpy as np
+# import pandas as pd
+# import streamlit as st
+# import pickle
+# import json
+# from sklearn import preprocessing
+
+# # Load model and encoder
+# pipeline = pickle.load(open('models/K-Nearest Neighbors.pkl', 'rb'))
+# encoder = pickle.load(open('models/encoders.pkl', 'rb'))
+
+# # Define all the columns
+# cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 
+#         'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 
+#         'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 
+#         'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 
+#         'TotalCharges']
+
+# def main():
+#     st.title("Income Predictor")
+    
+#     # HTML styling for the title
+#     html_temp = """
+#     <div style="background:#025246 ;padding:10px">
+#     <h2 style="color:white;text-align:center;">Income Prediction App</h2>
+#     </div>
+#     """
+    
+#     st.markdown(html_temp, unsafe_allow_html=True)
+    
+#     # User input
+#     gender = st.selectbox("Gender", ["Female", "Male"])
+#     SeniorCitizen = st.selectbox("Senior Citizen", ["0", "1"])
+#     Partner = st.selectbox("Partner", ["Yes", "No"])
+#     Dependents = st.selectbox("Dependents", ["Yes", "No"])
+#     tenure = st.text_input("Tenure", "0")
+#     PhoneService = st.selectbox("Phone Service", ["Yes", "No"])
+#     MultipleLines = st.selectbox("Multiple Lines", ["No", "Yes", "No phone service"])
+#     InternetService = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
+#     OnlineSecurity = st.selectbox("Online Security", ["No", "Yes", "No internet service"])
+#     OnlineBackup = st.selectbox("Online Backup", ["No", "Yes", "No internet service"])
+#     DeviceProtection = st.selectbox("Device Protection", ["No", "Yes", "No internet service"])
+#     TechSupport = st.selectbox("Tech Support", ["No", "Yes", "No internet service"])
+#     StreamingTV = st.selectbox("Streaming TV", ["No", "Yes", "No internet service"])
+#     StreamingMovies = st.selectbox("Streaming Movies", ["No", "Yes", "No internet service"])
+#     Contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
+#     PaperlessBilling = st.selectbox("Paperless Billing", ["Yes", "No"])
+#     PaymentMethod = st.selectbox("Payment Method", ["Bank transfer (automatic)", "Credit card (automatic)", "Electronic check", "Mailed check"])
+#     MonthlyCharges = st.text_input("Monthly Charges", "0")
+#     TotalCharges = st.text_input("Total Charges", "0")
+
+#     if st.button("Predict"):
+#         # Create DataFrame from user input
+#         data = {
+#             'gender': [gender], 'SeniorCitizen': [SeniorCitizen], 'Partner': [Partner], 
+#             'Dependents': [Dependents], 'tenure': [float(tenure)], 'PhoneService': [PhoneService],
+#             'MultipleLines': [MultipleLines], 'InternetService': [InternetService], 
+#             'OnlineSecurity': [OnlineSecurity], 'OnlineBackup': [OnlineBackup], 
+#             'DeviceProtection': [DeviceProtection], 'TechSupport': [TechSupport], 
+#             'StreamingTV': [StreamingTV], 'StreamingMovies': [StreamingMovies],
+#             'Contract': [Contract], 'PaperlessBilling': [PaperlessBilling], 
+#             'PaymentMethod': [PaymentMethod], 'MonthlyCharges': [float(MonthlyCharges)], 
+#             'TotalCharges': [float(TotalCharges)]
+#         }
+#         df = pd.DataFrame(data, columns=cols)
+        
+
+#         # Add the encoded columns back to the DataFrame
+
+#         for col in df.columns:
+#             if col in encoder.keys():
+#                 le = encoder[col]
+#                 df[col] = le.transform(df[col])
+        
+#         # Ensure the DataFrame has the correct order of columns
+#         df = df[cols]
+        
+        
+#         # Make prediction
+#         features_list = df
+#         prediction = pipeline.predict(features_list)
+    
+#         output = int(prediction[0])
+#         result = "Yes" if output == 1 else "No"
+
+#         st.success(f'Prediction: {result}')
+
+# if __name__ == '__main__':
+#     main()
+
 import numpy as np
 import pandas as pd
-import streamlit as st 
-from sklearn import preprocessing
+import streamlit as st
 import pickle
+import json
+from sklearn import preprocessing
 
-model = pickle.load(open('models/best_svc_poly.pkl', 'rb'))
-encoder_dict = pickle.load(open('encoder.pkl', 'rb')) 
-cols=['gender','SeniorCitizen','Partner','Dependents','tenure','PhoneService','MultipleLines','InternetService','OnlineSecurity','OnlineBackup','DeviceProtection','TechSupport','StreamingTV','StreamingMovies','Contract','PaperlessBilling','PaymentMethod','MonthlyCharges','TotalCharges']    
-  
-def main(): 
+# Load encoders
+encoder = pickle.load(open('models/encoders.pkl', 'rb'))
+
+# Define all the columns
+cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 
+        'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 
+        'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 
+        'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 
+        'TotalCharges']
+
+def load_model(model_name):
+    return pickle.load(open(f'models/{model_name}', 'rb'))
+
+def main():
     st.title("Income Predictor")
+    
+    # HTML styling for the title
     html_temp = """
     <div style="background:#025246 ;padding:10px">
-    <h2 style="color:white;text-align:center;">Income Prediction App </h2>
+    <h2 style="color:white;text-align:center;">Income Prediction App</h2>
     </div>
     """
-    st.markdown(html_temp, unsafe_allow_html = True)
     
-    age = st.text_input("Age","0") 
-    workclass = st.selectbox("Working Class", ["Federal-gov","Local-gov","Never-worked","Private","Self-emp-inc","Self-emp-not-inc","State-gov","Without-pay"]) 
-    education = st.selectbox("Education",["10th","11th","12th","1st-4th","5th-6th","7th-8th","9th","Assoc-acdm","Assoc-voc","Bachelors","Doctorate","HS-grad","Masters","Preschool","Prof-school","Some-college"]) 
-    marital_status = st.selectbox("Marital Status",["Divorced","Married-AF-spouse","Married-civ-spouse","Married-spouse-absent","Never-married","Separated","Widowed"]) 
-    occupation = st.selectbox("Occupation",["Adm-clerical","Armed-Forces","Craft-repair","Exec-managerial","Farming-fishing","Handlers-cleaners","Machine-op-inspct","Other-service","Priv-house-serv","Prof-specialty","Protective-serv","Sales","Tech-support","Transport-moving"]) 
-    relationship = st.selectbox("Relationship",["Husband","Not-in-family","Other-relative","Own-child","Unmarried","Wife"]) 
-    race = st.selectbox("Race",["Amer Indian Eskimo","Asian Pac Islander","Black","Other","White"]) 
-    gender = st.selectbox("Gender",["Female","Male"]) 
-    capital_gain = st.text_input("Capital Gain","0") 
-    capital_loss = st.text_input("Capital Loss","0") 
-    hours_per_week = st.text_input("Hours per week","0") 
-    nativecountry = st.selectbox("Native Country",["Cambodia","Canada","China","Columbia","Cuba","Dominican Republic","Ecuador","El Salvadorr","England","France","Germany","Greece","Guatemala","Haiti","Netherlands","Honduras","HongKong","Hungary","India","Iran","Ireland","Italy","Jamaica","Japan","Laos","Mexico","Nicaragua","Outlying-US(Guam-USVI-etc)","Peru","Philippines","Poland","Portugal","Puerto-Rico","Scotland","South","Taiwan","Thailand","Trinadad&Tobago","United States","Vietnam","Yugoslavia"]) 
+    st.markdown(html_temp, unsafe_allow_html=True)
     
-    if st.button("Predict"): 
-        features = [[age,workclass,education,marital_status,occupation,relationship,race,gender,capital_gain,capital_loss,hours_per_week,nativecountry]]
-        data = {'age': int(age), 'workclass': workclass, 'education': education, 'maritalstatus': marital_status, 'occupation': occupation, 'relationship': relationship, 'race': race, 'gender': gender, 'capitalgain': int(capital_gain), 'capitalloss': int(capital_loss), 'hoursperweek': int(hours_per_week), 'nativecountry': nativecountry}
-        print(data)
-        df=pd.DataFrame([list(data.values())], columns=['age','workclass','education','maritalstatus','occupation','relationship','race','gender','capitalgain','capitalloss','hoursperweek','nativecountry'])
-                
-        category_col =['workclass', 'education', 'maritalstatus', 'occupation', 'relationship', 'race', 'gender', 'nativecountry']
-        for cat in encoder_dict:
-            for col in df.columns:
-                le = preprocessing.LabelEncoder()
-                if cat == col:
-                    le.classes_ = encoder_dict[cat]
-                    for unique_item in df[col].unique():
-                        if unique_item not in le.classes_:
-                            df[col] = ['Unknown' if x == unique_item else x for x in df[col]]
-                    df[col] = le.transform(df[col])
-            
-        features_list = df.values.tolist()      
+    # Model selection with K-Nearest Neighbors as default and indicating it's the best
+    model_option = st.selectbox("Select Model", [
+        'Ada Boost.pkl', 'Naive Bayes.pkl', 'Support Vector Machine.pkl', 
+        'Decision Tree.pkl', 'Gradient Boosting.pkl', 'Logistic Regression.pkl', 
+        'Random Forest.pkl', 'XG Boost.pkl', 'K-Nearest Neighbors.pkl (Best)'
+    ], index=8)  # Index 8 is for 'K-Nearest Neighbors.pkl (Best)'
+
+    # Load the selected model
+    model = load_model(model_option.replace(' (Best)', ''))
+    
+    # User input
+    gender = st.selectbox("Gender", ["Female", "Male"])
+    SeniorCitizen = st.selectbox("Senior Citizen", ["0", "1"])
+    Partner = st.selectbox("Partner", ["Yes", "No"])
+    Dependents = st.selectbox("Dependents", ["Yes", "No"])
+    tenure = st.text_input("Tenure", "0")
+    PhoneService = st.selectbox("Phone Service", ["Yes", "No"])
+    MultipleLines = st.selectbox("Multiple Lines", ["No", "Yes", "No phone service"])
+    InternetService = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
+    OnlineSecurity = st.selectbox("Online Security", ["No", "Yes", "No internet service"])
+    OnlineBackup = st.selectbox("Online Backup", ["No", "Yes", "No internet service"])
+    DeviceProtection = st.selectbox("Device Protection", ["No", "Yes", "No internet service"])
+    TechSupport = st.selectbox("Tech Support", ["No", "Yes", "No internet service"])
+    StreamingTV = st.selectbox("Streaming TV", ["No", "Yes", "No internet service"])
+    StreamingMovies = st.selectbox("Streaming Movies", ["No", "Yes", "No internet service"])
+    Contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
+    PaperlessBilling = st.selectbox("Paperless Billing", ["Yes", "No"])
+    PaymentMethod = st.selectbox("Payment Method", ["Bank transfer (automatic)", "Credit card (automatic)", "Electronic check", "Mailed check"])
+    MonthlyCharges = st.text_input("Monthly Charges", "0")
+    TotalCharges = st.text_input("Total Charges", "0")
+
+    if st.button("Predict"):
+        # Create DataFrame from user input
+        data = {
+            'gender': [gender], 'SeniorCitizen': [SeniorCitizen], 'Partner': [Partner], 
+            'Dependents': [Dependents], 'tenure': [float(tenure)], 'PhoneService': [PhoneService],
+            'MultipleLines': [MultipleLines], 'InternetService': [InternetService], 
+            'OnlineSecurity': [OnlineSecurity], 'OnlineBackup': [OnlineBackup], 
+            'DeviceProtection': [DeviceProtection], 'TechSupport': [TechSupport], 
+            'StreamingTV': [StreamingTV], 'StreamingMovies': [StreamingMovies],
+            'Contract': [Contract], 'PaperlessBilling': [PaperlessBilling], 
+            'PaymentMethod': [PaymentMethod], 'MonthlyCharges': [float(MonthlyCharges)], 
+            'TotalCharges': [float(TotalCharges)]
+        }
+        df = pd.DataFrame(data, columns=cols)
+        
+        # Apply the mappings for categorical variables
+        non_cat_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+        
+        enc_cols = df.drop(non_cat_cols, axis=1).columns
+
+        # Encode categorical columns
+        for col in enc_cols:
+            if col in encoder.keys():
+                le = encoder[col]
+                df[col] = le.transform(df[col])
+        
+        # Ensure the DataFrame has the correct order of columns
+        df = df[cols]
+        
+        # Make prediction
+        features_list = df.values.tolist()
         prediction = model.predict(features_list)
     
         output = int(prediction[0])
-        if output == 1:
-            text = ">50K"
-        else:
-            text = "<=50K"
+        result = "Yes" if output == 1 else "No"
 
-        st.success('Employee Income is {}'.format(text))
-      
-if __name__=='__main__': 
+        st.success(f'Prediction: {result}')
+
+if __name__ == '__main__':
     main()
