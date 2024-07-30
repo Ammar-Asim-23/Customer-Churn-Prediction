@@ -6,6 +6,9 @@ import pickle
 import json
 from sklearn import preprocessing
 import mysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Load encoders
 encoder = pickle.load(open('models/encoders.pkl', 'rb'))
@@ -21,10 +24,10 @@ def load_model(model_name):
     return pickle.load(open(f'models/{model_name}', 'rb'))
 def create_connection():
     connection = mysql.connector.connect(
-        host= 'localhost',
-        user='ammar-asim', 
-        password='2003',
-        database='model_predictions'
+        host= os.environ.get("host"),
+        user=os.environ.get("username"), 
+        password=os.environ.get("password"),
+        database=os.environ.get("database")
         )
     return connection
 
