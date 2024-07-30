@@ -1,6 +1,3 @@
-Based on your updated requirements, here’s the revised README.md template for your Customer Retention Prediction project:
-
-```markdown
 # Customer Retention Prediction Project
 
 ## Overview
