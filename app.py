@@ -1,9 +1,11 @@
+import mysql.connector
 import numpy as np
 import pandas as pd
 import streamlit as st
 import pickle
 import json
 from sklearn import preprocessing
+import mysql
 
 # Load encoders
 encoder = pickle.load(open('models/encoders.pkl', 'rb'))
@@ -17,6 +19,40 @@ cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneServ
 
 def load_model(model_name):
     return pickle.load(open(f'models/{model_name}', 'rb'))
+def create_connection():
+    connection = mysql.connector.connect(
+        host= 'localhost',
+        user='ammar-asim', 
+        password='2003',
+        database='model_predictions'
+        )
+    return connection
+
+def insert_dataset(connection, data):
+    cursor = connection.cursor()
+    insert_query = """
+    INSERT INTO dataset (gender, SeniorCitizen, Partner, Dependents, tenure, PhoneService, 
+                         MultipleLines, InternetService, OnlineSecurity, OnlineBackup, 
+                         DeviceProtection, TechSupport, StreamingTV, StreamingMovies, 
+                         Contract, PaperlessBilling, PaymentMethod, MonthlyCharges, 
+                         TotalCharges)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    print(data)
+    values = tuple(data[0])
+
+    cursor.execute(insert_query, values)
+    connection.commit()
+    return cursor.lastrowid
+
+def insert_prediction(connection, dataset_id, model_name, prediction):
+    cursor = connection.cursor()
+    insert_query = """
+    INSERT INTO predictions (dataset_id, model_name, prediction)
+    VALUES (%s, %s, %s)
+    """
+    cursor.execute(insert_query, (dataset_id, model_name, prediction))
+    connection.commit()
 
 def main():
     st.title("Income Predictor")
@@ -74,7 +110,11 @@ def main():
             'PaymentMethod': [PaymentMethod], 'MonthlyCharges': [float(MonthlyCharges)], 
             'TotalCharges': [float(TotalCharges)]
         }
+        # Insert dataset into MySQL
+        connection = create_connection()
         df = pd.DataFrame(data, columns=cols)
+
+        dataset_id = insert_dataset(connection, df.values)
         
         # Apply the mappings for categorical variables
         non_cat_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
@@ -89,6 +129,11 @@ def main():
         
         # Ensure the DataFrame has the correct order of columns
         df = df[cols]
+
+
+        
+
+
         
         # Make prediction
         features_list = df.values.tolist()
@@ -97,7 +142,11 @@ def main():
         output = int(prediction[0])
         result = "Yes" if output == 1 else "No"
 
+        # Insert prediction into MySQL
+        insert_prediction(connection, dataset_id, model_option.replace(' (Best)', ''), result)
+
         st.success(f'Prediction: {result}')
+        connection.close()
 
 if __name__ == '__main__':
     main()
