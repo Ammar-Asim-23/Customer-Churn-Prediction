@@ -41,7 +41,6 @@ def insert_dataset(connection, data):
                          TotalCharges)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    print(data)
     values = tuple(data[0])
 
     cursor.execute(insert_query, values)

@@ -127,5 +127,238 @@ The best model pipeline configuration:
 KNeighborsClassifier(n_neighbors=3, weights='distance')
 ``` 
 
+Here is the feature importance information formatted in Markdown:
+
+```markdown
+## Feature Importance for Different Models
+
+### Random Forest
+```
+| Feature           | Importance |
+|-------------------|------------|
+| Contract          | 0.199789   |
+| tenure            | 0.180900   |
+| MonthlyCharges    | 0.101548   |
+| OnlineSecurity    | 0.100847   |
+| TotalCharges      | 0.100756   |
+| TechSupport       | 0.085109   |
+| InternetService   | 0.057598   |
+| OnlineBackup      | 0.039588   |
+| DeviceProtection  | 0.028089   |
+| PaymentMethod     | 0.018662   |
+| Dependents        | 0.015825   |
+| Partner           | 0.015394   |
+| StreamingTV       | 0.010856   |
+| StreamingMovies   | 0.010071   |
+| gender            | 0.009854   |
+| MultipleLines     | 0.008600   |
+| PaperlessBilling  | 0.007461   |
+| SeniorCitizen     | 0.005519   |
+| PhoneService      | 0.003535   |
+```
+
+### Gradient Boosting
+```
+| Feature           | Importance |
+|-------------------|------------|
+| Contract          | 0.580647   |
+| tenure            | 0.121202   |
+| MonthlyCharges    | 0.090292   |
+| TotalCharges      | 0.085427   |
+| InternetService   | 0.067164   |
+| TechSupport       | 0.013331   |
+| OnlineSecurity    | 0.009196   |
+| OnlineBackup      | 0.007528   |
+| PaymentMethod     | 0.005179   |
+| Dependents        | 0.004340   |
+| MultipleLines     | 0.002619   |
+| SeniorCitizen     | 0.002366   |
+| DeviceProtection  | 0.002172   |
+| PaperlessBilling  | 0.002039   |
+| StreamingTV       | 0.002028   |
+| gender            | 0.001719   |
+| Partner           | 0.001535   |
+| PhoneService      | 0.000719   |
+| StreamingMovies   | 0.000497   |
+```
+
+### Support Vector Machine
+```
+| Feature           | Importance |
+|-------------------|------------|
+| TotalCharges      | 0.447549   |
+| tenure            | 0.377472   |
+| MonthlyCharges    | 0.371367   |
+| Contract          | 0.002236   |
+| StreamingTV       | 0.001376   |
+| PaymentMethod     | 0.001204   |
+| StreamingMovies   | 0.000688   |
+| OnlineSecurity    | 0.000688   |
+| PaperlessBilling  | 0.000602   |
+| MultipleLines     | 0.000516   |
+| DeviceProtection  | 0.000516   |
+| gender            | 0.000430   |
+| OnlineBackup      | 0.000430   |
+| Dependents        | 0.000172   |
+| SeniorCitizen     | 0.000000   |
+| Partner           | 0.000000   |
+| PhoneService      | 0.000000   |
+| InternetService   | 0.000000   |
+| TechSupport       | -0.000258  |
+```
+
+### Logistic Regression
+```
+| Feature           | Importance |
+|-------------------|------------|
+| InternetService   | 0.456468   |
+| PaperlessBilling  | 0.259925   |
+| PaymentMethod     | 0.069234   |
+| MonthlyCharges    | 0.061924   |
+| TotalCharges      | 0.001223   |
+| StreamingMovies   | -0.058378  |
+| StreamingTV       | -0.085999  |
+| tenure            | -0.187122  |
+| MultipleLines     | -0.216107  |
+| SeniorCitizen     | -0.238588  |
+| PhoneService      | -0.280188  |
+| DeviceProtection  | -0.360974  |
+| Partner           | -0.419990  |
+| gender            | -0.443873  |
+| OnlineBackup      | -0.510363  |
+| OnlineSecurity    | -0.511429  |
+| Dependents        | -0.680224  |
+| TechSupport       | -0.763374  |
+| Contract          | -1.205329  |
+```
+
+### K-Nearest Neighbors
+```
+| Feature           | Importance |
+|-------------------|------------|
+| MonthlyCharges    | 0.296733   |
+| TotalCharges      | 0.279966   |
+| tenure            | 0.071281   |
+| PaymentMethod     | 0.001720   |
+| Contract          | 0.000946   |
+| PaperlessBilling  | 0.000086   |
+| Partner           | 0.000000   |
+| DeviceProtection  | 0.000000   |
+| OnlineBackup      | 0.000000   |
+| PhoneService      | 0.000000   |
+| Dependents        | 0.000000   |
+| MultipleLines     | 0.000000   |
+| StreamingMovies   | 0.000000   |
+| OnlineSecurity    | 0.000000   |
+| InternetService   | 0.000000   |
+| TechSupport       | 0.000000   |
+| StreamingTV       | 0.000000   |
+| gender            | -0.000430  |
+| SeniorCitizen     | -0.000688  |
+```
+
+### Decision Tree
+```
+| Feature           | Importance |
+|-------------------|------------|
+| Contract          | 0.534657   |
+| TotalCharges      | 0.119488   |
+| MonthlyCharges    | 0.107362   |
+| tenure            | 0.080831   |
+| InternetService   | 0.070151   |
+| PaymentMethod     | 0.014998   |
+| TechSupport       | 0.010704   |
+| OnlineSecurity    | 0.009869   |
+| gender            | 0.009167   |
+| Dependents        | 0.007443   |
+| SeniorCitizen     | 0.005915   |
+| OnlineBackup      | 0.005581   |
+| MultipleLines     | 0.005290   |
+| PhoneService      | 0.004329   |
+| PaperlessBilling  | 0.003639   |
+| DeviceProtection  | 0.003430   |
+| StreamingTV       | 0.002898   |
+| Partner           | 0.002408   |
+| StreamingMovies   | 0.001840   |
+```
+
+### AdaBoost
+```
+| Feature           | Importance |
+|-------------------|------------|
+| TotalCharges      | 0.255      |
+| MonthlyCharges    | 0.245      |
+| tenure            | 0.175      |
+| TechSupport       | 0.055      |
+| OnlineSecurity    | 0.055      |
+| OnlineBackup      | 0.025      |
+| DeviceProtection  | 0.025      |
+| PhoneService      | 0.025      |
+| Contract          | 0.020      |
+| InternetService   | 0.020      |
+| StreamingMovies   | 0.020      |
+| StreamingTV       | 0.020      |
+| MultipleLines     | 0.015      |
+| gender            | 0.015      |
+| SeniorCitizen     | 0.010      |
+| Dependents        | 0.010      |
+| Partner           | 0.005      |
+| PaymentMethod     | 0.005      |
+| PaperlessBilling  | 0.000      |
+```
+
+### XGBoost
+```
+| Feature           | Importance |
+|-------------------|------------|
+| Contract          | 0.654443   |
+| InternetService   | 0.130281   |
+| TechSupport       | 0.023324   |
+| Dependents        | 0.023067   |
+| tenure            | 0.022033   |
+| OnlineSecurity    | 0.017877   |
+| MonthlyCharges    | 0.016280   |
+| OnlineBackup      | 0.016168   |
+| DeviceProtection  | 0.011127   |
+| TotalCharges      | 0.010829   |
+| PhoneService      | 0.009766   |
+| SeniorCitizen     | 0.009382   |
+| StreamingMovies   | 0.008740   |
+| gender            | 0.008523   |
+| MultipleLines     | 0.008490   |
+| Partner           | 0.008328   |
+| StreamingTV       | 0.007590   |
+| PaperlessBilling  | 0.007140   |
+| PaymentMethod     | 0.006612   |
+```
+
+### Naive Bayes
+```
+| Feature           | Importance |
+|-------------------|------------|
+| Contract          | 0.126913   |
+| MonthlyCharges    | 0.019518   |
+| OnlineSecurity    | 0.018143   |
+| InternetService   | 0.016079   |
+| tenure            | 0.015821   |
+| Tech
+
+Support       | 0.013500   |
+| Dependents        | 0.012726   |
+| OnlineBackup      | 0.008942   |
+| PaperlessBilling  | 0.005159   |
+| gender            | 0.004385   |
+| TotalCharges      | 0.004127   |
+| SeniorCitizen     | 0.003869   |
+| PhoneService      | 0.003439   |
+| StreamingMovies   | 0.003353   |
+| Partner           | 0.003267   |
+| PaymentMethod     | 0.002236   |
+| DeviceProtection  | 0.001548   |
+| StreamingTV       | -0.000086  |
+| MultipleLines     | -0.000688  |
+```
+```
+
 ## Contributing
 Contributions are welcome! Please create a pull request with a clear description of your changes.
