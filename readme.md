@@ -41,14 +41,6 @@ streamlit run app.py
 ```
 2. Open the provided URL in your web browser to interact with the app.
 
-## Project Structure
-- `analysis.ipynb`: Contains all the data analysis and model training steps.
-- `app.py`: Streamlit app for deploying the model and predicting customer retention.
-- `README.md`: Project overview and instructions.
-- `requirements.txt`: List of required Python packages.
-- `models/`: Directory to save trained model pickle files.
-- `cleaned_dataset.csv`: The dataset used for training.
-
 ## Setting Up MySQL Database
 To store user credentials securely, create a MySQL database and store the following details in a `.env` file:
 - `username`
@@ -362,6 +354,135 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
 | SeniorCitizen     | 0.004032   |
 | TotalCharges      | 0.003217   |
 ```
+
+## Model Performance Comparison
+
+
+### Classification Report for Random Forest:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      0.96      0.95       528
+           1       0.97      0.95      0.96       653
+
+    accuracy                           0.95      1181
+   macro avg       0.95      0.95      0.95      1181
+weighted avg       0.95      0.95      0.95      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Gradient Boosting:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      0.95      0.94       528
+           1       0.96      0.95      0.95       653
+
+    accuracy                           0.95      1181
+   macro avg       0.95      0.95      0.95      1181
+weighted avg       0.95      0.95      0.95      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Support Vector Machine:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.93      0.99      0.96       528
+           1       0.99      0.94      0.96       653
+
+    accuracy                           0.96      1181
+   macro avg       0.96      0.96      0.96      1181
+weighted avg       0.96      0.96      0.96      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Logistic Regression:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.85      0.93      0.89       528
+           1       0.94      0.87      0.90       653
+
+    accuracy                           0.90      1181
+   macro avg       0.90      0.90      0.90      1181
+weighted avg       0.90      0.90      0.90      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for K-Nearest Neighbors:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.99      0.97      0.98       528
+           1       0.98      0.99      0.98       653
+
+    accuracy                           0.98      1181
+   macro avg       0.98      0.98      0.98      1181
+weighted avg       0.98      0.98      0.98      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Decision Tree:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.91      0.92      0.92       528
+           1       0.94      0.93      0.93       653
+
+    accuracy                           0.92      1181
+   macro avg       0.92      0.92      0.92      1181
+weighted avg       0.92      0.92      0.92      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Ada Boost:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.92      0.93      0.92       528
+           1       0.94      0.94      0.94       653
+
+    accuracy                           0.93      1181
+   macro avg       0.93      0.93      0.93      1181
+weighted avg       0.93      0.93      0.93      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for XG Boost:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      0.96      0.95       528
+           1       0.96      0.95      0.96       653
+
+    accuracy                           0.96      1181
+   macro avg       0.95      0.96      0.95      1181
+weighted avg       0.96      0.96      0.96      1181
+
+-----------------------------------------------------
+
+
+### Classification Report for Naive Bayes:
+-----------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.83      0.91      0.87       528
+           1       0.93      0.85      0.89       653
+
+    accuracy                           0.88      1181
+   macro avg       0.88      0.88      0.88      1181
+weighted avg       0.88      0.88      0.88      1181
+
+-----------------------------------------------------
+
 
 ## Contributing
 Contributions are welcome! Please create a pull request with a clear description of your changes.
