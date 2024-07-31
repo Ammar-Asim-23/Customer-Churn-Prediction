@@ -130,9 +130,11 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
 Here is the feature importance information formatted in Markdown:
 
 ```markdown
+
 ## Feature Importance for Different Models
 
-### Random Forest
+**Random Forest**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -157,7 +159,8 @@ Here is the feature importance information formatted in Markdown:
 | PhoneService      | 0.003535   |
 ```
 
-### Gradient Boosting
+**Gradient Boosting**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -182,7 +185,8 @@ Here is the feature importance information formatted in Markdown:
 | StreamingMovies   | 0.000497   |
 ```
 
-### Support Vector Machine
+**Support Vector Machine**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -207,7 +211,8 @@ Here is the feature importance information formatted in Markdown:
 | TechSupport       | -0.000258  |
 ```
 
-### Logistic Regression
+**Logistic Regression**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -232,7 +237,8 @@ Here is the feature importance information formatted in Markdown:
 | Contract          | -1.205329  |
 ```
 
-### K-Nearest Neighbors
+**K-Nearest Neighbors**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -257,7 +263,8 @@ Here is the feature importance information formatted in Markdown:
 | SeniorCitizen     | -0.000688  |
 ```
 
-### Decision Tree
+**Decision Tree**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -282,7 +289,8 @@ Here is the feature importance information formatted in Markdown:
 | StreamingMovies   | 0.001840   |
 ```
 
-### AdaBoost
+**AdaBoost**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -307,7 +315,8 @@ Here is the feature importance information formatted in Markdown:
 | PaperlessBilling  | 0.000      |
 ```
 
-### XGBoost
+**XGBoost**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -332,7 +341,8 @@ Here is the feature importance information formatted in Markdown:
 | PaymentMethod     | 0.006612   |
 ```
 
-### Naive Bayes
+**Naive Bayes**
+
 ```
 | Feature           | Importance |
 |-------------------|------------|
@@ -341,22 +351,20 @@ Here is the feature importance information formatted in Markdown:
 | OnlineSecurity    | 0.018143   |
 | InternetService   | 0.016079   |
 | tenure            | 0.015821   |
-| Tech
-
-Support       | 0.013500   |
+| TechSupport       | 0.013500   |
 | Dependents        | 0.012726   |
-| OnlineBackup      | 0.008942   |
-| PaperlessBilling  | 0.005159   |
-| gender            | 0.004385   |
-| TotalCharges      | 0.004127   |
-| SeniorCitizen     | 0.003869   |
-| PhoneService      | 0.003439   |
-| StreamingMovies   | 0.003353   |
-| Partner           | 0.003267   |
-| PaymentMethod     | 0.002236   |
-| DeviceProtection  | 0.001548   |
-| StreamingTV       | -0.000086  |
-| MultipleLines     | -0.000688  |
+| OnlineBackup      | 0.010920   |
+| DeviceProtection  | 0.010920   |
+| PaymentMethod     | 0.010920   |
+| PaperlessBilling  | 0.009871   |
+| gender            | 0.009091   |
+| Partner           | 0.008223   |
+| StreamingMovies   | 0.007364   |
+| StreamingTV       | 0.006519   |
+| PhoneService      | 0.005683   |
+| MultipleLines     | 0.004854   |
+| SeniorCitizen     | 0.004032   |
+| TotalCharges      | 0.003217   |
 ```
 ```
 
