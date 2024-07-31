@@ -127,10 +127,6 @@ The best model pipeline configuration:
 KNeighborsClassifier(n_neighbors=3, weights='distance')
 ``` 
 
-Here is the feature importance information formatted in Markdown:
-
-```markdown
-
 ## Feature Importance for Different Models
 
 **Random Forest**
@@ -365,7 +361,6 @@ Here is the feature importance information formatted in Markdown:
 | MultipleLines     | 0.004854   |
 | SeniorCitizen     | 0.004032   |
 | TotalCharges      | 0.003217   |
-```
 ```
 
 ## Contributing
