@@ -366,8 +366,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.97      0.95      0.96       653
 
     accuracy                           0.95      1181
-    macro avg       0.95      0.95      0.95      1181
-    weighted avg       0.95      0.95      0.95      1181
+    macro avg      0.95      0.95      0.95      1181
+    weighted avg   0.95      0.95      0.95      1181
 
 -----------------------------------------------------
 
@@ -380,8 +380,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.96      0.95      0.95       653
 
     accuracy                           0.95      1181
-    macro avg       0.95      0.95      0.95      1181
-    weighted avg       0.95      0.95      0.95      1181
+    macro avg      0.95      0.95      0.95      1181
+    weighted avg   0.95      0.95      0.95      1181
 
 -----------------------------------------------------
 
@@ -394,8 +394,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.99      0.94      0.96       653
 
     accuracy                           0.96      1181
-    macro avg       0.96      0.96      0.96      1181
-    weighted avg       0.96      0.96      0.96      1181
+    macro avg      0.96      0.96      0.96      1181
+    weighted avg   0.96      0.96      0.96      1181
 
 -----------------------------------------------------
 
@@ -408,8 +408,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.94      0.87      0.90       653
 
     accuracy                           0.90      1181
-    macro avg       0.90      0.90      0.90      1181
-    weighted avg       0.90      0.90      0.90      1181
+    macro avg      0.90      0.90      0.90      1181
+    weighted avg   0.90      0.90      0.90      1181
 
 -----------------------------------------------------
 
@@ -422,8 +422,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.98      0.99      0.98       653
 
     accuracy                           0.98      1181
-    macro avg       0.98      0.98      0.98      1181
-    weighted avg       0.98      0.98      0.98      1181
+    macro avg      0.98      0.98      0.98      1181
+    weighted avg   0.98      0.98      0.98      1181
 
 -----------------------------------------------------
 
@@ -436,8 +436,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.94      0.93      0.93       653
 
     accuracy                           0.92      1181
-    macro avg       0.92      0.92      0.92      1181
-    weighted avg       0.92      0.92      0.92      1181
+    macro avg      0.92      0.92      0.92      1181
+    weighted avg   0.92      0.92      0.92      1181
 
 -----------------------------------------------------
 
@@ -450,8 +450,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.94      0.94      0.94       653
 
     accuracy                           0.93      1181
-    macro avg       0.93      0.93      0.93      1181
-    weighted avg       0.93      0.93      0.93      1181
+    macro avg      0.93      0.93      0.93      1181
+    weighted avg   0.93      0.93      0.93      1181
 
 -----------------------------------------------------
 
@@ -464,8 +464,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.96      0.95      0.96       653
 
     accuracy                           0.96      1181
-    macro avg       0.95      0.96      0.95      1181
-    weighted avg       0.96      0.96      0.96      1181
+    macro avg      0.95      0.96      0.95      1181
+    weighted avg   0.96      0.96      0.96      1181
 
 -----------------------------------------------------
 
@@ -478,8 +478,8 @@ KNeighborsClassifier(n_neighbors=3, weights='distance')
            1       0.93      0.85      0.89       653
 
     accuracy                           0.88      1181
-    macro avg       0.88      0.88      0.88      1181
-    weighted avg       0.88      0.88      0.88      1181
+    macro avg      0.88      0.88      0.88      1181
+    weighted avg   0.88      0.88      0.88      1181
 
 -----------------------------------------------------
 
